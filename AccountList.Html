@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Recently Created Accounts" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <lightning-layout>
+                <lightning-layout-item size="12">
+                    <ul class="slds-list_horizontal slds-wrap">
+                        <template for:each={accounts} for:item="account">
+                            <li key={account.Id} class="slds-p-horizontal_small slds-size_1-of-5">
+                                <lightning-record-view-form
+                                    record-id={account.Id}
+                                    object-api-name="Account"
+                                >
+                                    <div class="slds-box slds-box_small slds-text-align_center">
+                                        <p class="slds-text-heading_small">
+                                            {account.Name}
+                                        </p>
+                                        <p class="slds-text-body_small">
+                                            {account.CreatedDate}
+                                        </p>
+                                    </div>
+                                </lightning-record-view-form>
+                            </li>
+                        </template>
+                    </ul>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>
