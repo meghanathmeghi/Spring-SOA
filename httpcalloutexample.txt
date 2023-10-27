@@ -1,0 +1,38 @@
+public class HttpCalloutExample {
+
+    public void makeHttpCallout() {
+        // Define the endpoint URL
+        String endpoint = 'https://postman-echo.com/get?foo1=bar1&foo2=bar2';
+
+        // Create an HTTP request
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(endpoint);
+        request.setMethod('GET');
+
+        // Create an HTTP client
+        Http http = new Http();
+
+        // Send the request and get the response
+        HttpResponse response = http.send(request);
+
+        // Check if the callout was successful (status code 200)
+        if (response.getStatusCode() == 200) {
+            // Print the response body to the debug log
+            System.debug('Response Body: ' + response.getBody());
+        } else {
+            // If the callout was not successful, print the status code and error message
+            System.debug('HTTP Callout Error - Status Code: ' + response.getStatusCode());
+            System.debug('HTTP Callout Error - Response: ' + response.getStatus());
+        }
+    }
+}
+
+
+
+____________________________________________________________________________________________________
+You can create an instance of the HttpCalloutExample class and call the makeHttpCallout method to make the HTTP callout and print the response,
+ including both the body and headers.
+
+
+HttpCalloutExample calloutExample = new HttpCalloutExample();
+calloutExample.makeHttpCallout();
